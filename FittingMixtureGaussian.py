@@ -34,11 +34,11 @@ while True:
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         IC = 10**5
-        for i in xrange(IC):
+        for i in range(IC):
             # likely, alpha, miu, sigma = sess.run([_neg_log_likelihood, _alpha, _miu, _sigma], feed_dict={_batch: sample(samples, batch_size)})
             # print i, likely, alpha, miu, sigma
             _, likely, alpha, miu, sigma = sess.run([_optimizer, _neg_log_likelihood, _alpha, _miu, _sigma], feed_dict={_batch: sample(samples, batch_size)})
-            print i, likely, alpha, miu, sigma
+            print(i, likely, alpha, miu, sigma)
             if math.isnan(likely):
                 break
         if i+1 == IC:

@@ -29,13 +29,13 @@ with tf.Session() as sess:
     i = 1
     # while abs(miu - real_miu) > 0.01 or abs(sigma - real_sigma) > 0.01:
     lr = 0.01
-    while i < 10**6:
+    while i < 10**4:
         _, likely, miu, sigma = sess.run([_optimizer, _minus_log_likelihood2, _miu, _sigma], feed_dict={_batch: sample(samples, batch_size), _learning_rate: lr})
         # sampled = sample(samples, batch_size)
         # likely1, likely2, miu, sigma = sess.run([_minus_log_likelihood1, _minus_log_likelihood2, _miu, _sigma], feed_dict={_batch: sampled})
         if i % 100 == 0:
             # print i, likely1, likely2, miu, sigma, sampled
-            print i, likely, miu, sigma
+            print(i, likely, miu, sigma)
         if i % 1000 == 0:
             lr /= 1.005
         i += 1

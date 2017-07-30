@@ -42,7 +42,7 @@ while True:
             # _, likelihood, alpha, sigma, miu = sess.run([_optimizer, _neg_log_likelihood, _alpha, _sigma, _miu], feed_dict={_batch: sample(trd, batch_size)})
             # print i, likelihood , alpha, sigma, miu
             _, likelihood = sess.run([_optimizer, _neg_log_likelihood], feed_dict={_batch: sample(samples, batch_size)})
-            print i, likelihood
+            print(i, likelihood)
             if math.isnan(likelihood):
                 break
         # if i+1 == IC:
