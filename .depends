@@ -1,0 +1,3 @@
+sudo pip install --upgrade matplotlib
+sudo pip install --upgrade opencv-python
+
