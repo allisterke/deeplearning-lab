@@ -60,13 +60,7 @@ class Discriminator:
             self.b_fc1 = bias_variable([1024])
 
             self.W_fc2 = weight_variable([1024, 2])
-            self.b_fc2 = bias_variable([1])
-
-            self.W_fc3 = weight_variable([100, 1024])
-            self.b_fc3 = bias_variable([1024])
-
-            self.W_fc4 = weight_variable([1024, 2])
-            self.b_fc4 = bias_variable([2])
+            self.b_fc2 = bias_variable([2])
 
     def discriminate(self, x):
         x = tf.reshape(x, [-1, 28, 28, 1])
@@ -257,7 +251,7 @@ def main(_):
         rg = 1e-2*1.02
         train_loss1 = train_loss2 = 1.
         sess.run(tf.global_variables_initializer())
-        steps = 20000
+        steps = 2000
         for i in range(steps):
             batch = mnist.train.next_batch(batch_size, shuffle=True)
             gene_batch = fake_embedding(batch_size)
