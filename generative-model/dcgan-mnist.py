@@ -247,8 +247,8 @@ def main(_):
         minimize(loss2, var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, g_scope))
 
     with tf.Session() as sess:
-        rd = 1e-2
-        rg = 1e-2*1.02
+        rd = 1e-2*1.02
+        rg = 1e-2
         train_loss1 = train_loss2 = 1.
         sess.run(tf.global_variables_initializer())
         steps = 2000
@@ -262,7 +262,7 @@ def main(_):
             train_loss1, _ = \
                 sess.run([loss1, train_step1],
                                  feed_dict={
-                                     learning_rate: rd * (1. if train_loss1 / train_loss2 < 1.8 else 1.05),
+                                     learning_rate: rd,
                                      rx: real_batch, ge: gene_batch,
                                  })
             train_loss2, _ = \
